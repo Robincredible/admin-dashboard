@@ -1,0 +1,7 @@
+.profiles {
+  display: flex;
+}
+
+.profile-container {
+  cursor: pointer;
+}
