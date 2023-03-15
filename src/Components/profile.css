@@ -1,0 +1,68 @@
+@media (min-width: 320px) {
+  .card.profile {
+    background: #5746ea;
+    top: 20px;
+    text-align: left;
+    padding: 40px;
+    min-height: auto;
+  }
+
+  .profile .name {
+    font-weight: 300;
+    font-size: 48px;
+    margin: 0 auto;
+  }
+
+  .profile img {
+    max-height: 100px;
+    max-width: 100px;
+    width: 100%;
+    object-fit: cover;
+    object-position: left;
+    position: relative;
+    left: 0;
+    border-radius: 100%;
+    border: 4px solid #ffffff;
+    min-height: 100px;
+  }
+
+  .profile p {
+    margin: 45px auto 7px;
+    opacity: 0.7;
+  }
+
+  .profile {
+    z-index: 1;
+  }
+
+  .card.period {
+    z-index: 0;
+    padding: 40px 40px 20px;
+    height: 100%;
+  }
+}
+
+@media (min-width: 640px) {
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1024px) {
+  .card.profile {
+    min-height: auto;
+    top: 30px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card.profile {
+    min-height: 57vh;
+  }
+}
+
+@media (min-width: 1440px) {
+  .card.profile {
+    min-height: 510px;
+  }
+}

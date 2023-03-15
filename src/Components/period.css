@@ -1,0 +1,42 @@
+@media (min-width: 320px) {
+  .period {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .period * {
+    transition: 0.3s;
+  }
+
+  .period p {
+    cursor: pointer;
+    opacity: 0.5;
+    font-weight: 400;
+    font-size: 18px;
+    text-align: left;
+  }
+
+  .period p.active {
+    opacity: 1;
+  }
+
+  .period-item {
+    opacity: 0.5;
+  }
+}
+
+@media (min-width: 640px) {
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1024px) {
+  .period {
+    flex-wrap: nowrap;
+  }
+}
+
+@media (min-width: 1200px) {
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "id": 0,
+    "text": "Daily"
+  },
+  {
+    "id": 1,
+    "text": "Weekly"
+  },
+  {
+    "id": 2,
+    "text": "Monthly"
+  }
+]
