@@ -8,26 +8,18 @@ import Stats from "./stats";
 import Period from "./period";
 
 const Dashboard = (props) => {
-  const [showContextMenu, setShowContextMenu] = useState(false);
   const [active, setActive] = useState("");
   const [selected, setSelected] = useState("Weekly");
-  const [name, setName] = useState("");
+  const [name, setName] = useState(props.dataset.name);
 
   const timeframes = ["Daily", "Weekly", "Monthly"]; //test data
-  const dataSet = props.dataset ? props.dataset : "";
-
-  // const clickHandler = (id) => {
-  //   if (!showContextMenu) {
-  //     setShowContextMenu(true);
-  //   } else {
-  //     setShowContextMenu(false);
-  //   }
-  // }
+  const [dataSet, setDataSet] = useState(props.dataset);
+  //const dataSet = props.dataset ? props.dataset : "";
 
   useEffect(() => {
+    setDataSet(props.dataset);
     setName(dataSet.name);
-    console.log("active is " + active);
-  }, [name]);
+  }, [dataSet]);
 
   return (
     <div className="flex-display">
@@ -40,16 +32,23 @@ const Dashboard = (props) => {
         />
       </div>
       <div className="stats-container grid">
-        {data.map((item) => {
+        {dataSet.data.map((item) => {
           return (
-            <div onMouseEnter={() => {setActive(item.title) }} onMouseLeave={() => {setActive("") }}>
+            <div
+              key={item.title}
+              onMouseEnter={() => {
+                setActive(item.title);
+              }}
+              onMouseLeave={() => {
+                setActive("");
+              }}
+            >
               <Stats
                 title={item.title}
                 timeframes={item.timeframes}
                 selected={selected}
                 key={item.title}
                 active={active}
-                showContextMenu={setShowContextMenu}
               />
             </div>
           );

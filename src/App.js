@@ -1,33 +1,44 @@
 import "./styles.css";
 import Dashboard from "./Components/dashboard";
+import Loading from "./Components/loading";
 import { useState, useEffect } from "react";
 
 export default function App() {
   const [dataset, setDataset] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [selected, setSelected] = useState();
+  const [errorMessage, setErrorMessage] = useState(null);
 
-  const [id, setId] = useState(1);
+  const [id, setId] = useState("6410273cb39f3d8572f1d9c3");
+  //const [id, setId] = useState("64100e7cb39f3d8572f1d9c0");
+  //const [id, setId] = useState("64102672b39f3d8572f1d9c2");
 
   useEffect(() => {
-    const url = "http://localhost:5000/api/users/" + id;
+    const url = "https://dashboard-rest-api.onrender.com/api/users/" + id;
 
     const fetchData = async () => {
       try {
-        const response = await fetch(url);
-        const json = await response.json();
-        console.log(json);
-        setDataset(json);
+        await fetch(url)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            setLoading(false);
+            setDataset(data);
+          });
       } catch (error) {
+        setErrorMessage(error);
         console.log(error);
       }
-    }
+    };
 
     fetchData();
-
   }, []);
 
   return (
     <div className="App">
-      <Dashboard dataset={dataset} />
+      {loading && <Loading />}
+      {!loading && <Dashboard dataset={dataset} />}
     </div>
   );
 }
