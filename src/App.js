@@ -11,10 +11,6 @@ export default function App() {
   const [id, setId] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
 
-  //const [id, setId] = useState("6410273cb39f3d8572f1d9c3");
-  //const [id, setId] = useState("64100e7cb39f3d8572f1d9c0");
-  //const [id, setId] = useState("64102672b39f3d8572f1d9c2");
-
   useEffect(() => {
     const url = "https://dashboard-rest-api.onrender.com/api/users/" + id;
 
@@ -48,7 +44,13 @@ export default function App() {
         />
       )}
       {!loading && !profilesLanding && (
-        <Dashboard dataset={dataset} selectedID={id} status={loading} />
+        <Dashboard
+          dataset={dataset}
+          selectedID={id}
+          status={loading}
+          setStatus={setLoading}
+          setProfiles={setProfilesLanding}
+        />
       )}
     </div>
   );
