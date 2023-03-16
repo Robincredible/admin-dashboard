@@ -1,7 +1,152 @@
-.profiles {
-  display: flex;
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(1080deg);
+  }
 }
 
-.profile-container {
-  cursor: pointer;
+@media (min-width: 320px) {
+  .profiles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .landing-profile-container {
+    cursor: pointer;
+    align-self: center;
+    margin: 20px;
+  }
+
+  .landing-profile-container p {
+    transition: 1s;
+    font-weight: 500;
+    font-size: 36px;
+    font-family: Luckiest Guy;
+    letter-spacing: 7px;
+    text-align: center;
+    text-shadow: -2px -2px #cf4862, -3px -3px #cf4862, -4px -4px #cf4862,
+      -3px -3px #cf4862, -2px -2px #cf4862, -1px -1px #cf4862, 1px 1px #cf4862,
+      2px 2px #cf4862, 3px 3px #cf4862, 4px 4px #cf4862, 5px 5px #cf4862;
+    width: 100%;
+  }
+
+  .landing-profile-container:hover p {
+    transition: 1s;
+    font-weight: 500;
+    color: #f1c75b;
+    font-size: 48px;
+    letter-spacing: 9px;
+    text-shadow: -2px -2px #1b284a, -3px -3px #1b284a, -4px -4px #1b284a,
+      -3px -3px #1b284a, -2px -2px #1b284a, -1px -1px #1b284a, 1px 1px #1b284a,
+      2px 2px #1b284a, 3px 3px #1b284a, 4px 4px #1b284a, 5px 5px #1b284a;
+    width: 100%;
+  }
+
+  .profile-border {
+    padding: 10px;
+    transition: 1s;
+    border-radius: 100%;
+    max-width: 320px;
+    max-height: 320px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .profile-border:hover {
+    transition: 1s;
+    transform: translateY(-9px);
+  }
+
+  .rotating-border {
+    height: 103%;
+    width: 110%;
+    transition: 0.6s;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 100%;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+  }
+
+  .rotating-border .rotation {
+    border: 7px dotted rgba(0, 0, 0, 0);
+    height: inherit;
+    width: inherit;
+    transition: 0.6s;
+    border-radius: inherit;
+    margin: 0 auto;
+    align-self: center;
+    animation: rotate;
+    animation-fill-mode: forwards;
+    animation-duration: 140s;
+    animation-direction: normal;
+    animation-iteration-count: infinite;
+  }
+
+  .profile-border:hover .rotating-border .rotation {
+    border: 7px dotted #ff5e7d;
+    transition: 0.6s;
+  }
+
+  .profile-image {
+    z-index: 1;
+    position: relative;
+    max-width: inherit;
+    max-height: inherit;
+    border-radius: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    display: flex;
+    transition: 0.6s;
+    align-self: center;
+    min-width: 250px;
+    min-height: 250px;
+  }
+
+  .profile-image:hover {
+    align-self: center;
+    transition: 0.6s;
+  }
+
+  .profile-image img {
+    height: auto;
+    width: 100%;
+    min-height: 317px;
+  }
+}
+
+@media (min-width: 640px) {
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1024px) {
+  .profiles {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .profile-border {
+    padding: 0px;
+  }
+
+  .landing-profile-container {
+    margin: 40px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .profiles {
+    flex-wrap: nowrap;
+  }
+}
+
+@media (min-width: 1440px) {
 }

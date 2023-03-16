@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./dashboard.css";
 import data from "../data.json";
@@ -14,16 +15,24 @@ const Dashboard = (props) => {
   const [active, setActive] = useState("");
   const [selected, setSelected] = useState("Weekly");
   const [name, setName] = useState(filteredData.name);
+  const [image, setImage] = useState(filteredData.profile_picture);
 
   const timeframes = ["Daily", "Weekly", "Monthly"]; //test data
   const [dataSet, setDataSet] = useState(filteredData);
   //const dataSet = props.dataset ? props.dataset : "";
 
-  console.log(dataSet[0].name);
+  const navigate = useNavigate();
+
+  const backHandler = () => {
+    //props.setStatus(true);
+    props.setProfiles(true);
+    navigate("/");
+  };
 
   useEffect(() => {
     setDataSet(filteredData);
     setName(dataSet[0].name);
+    setImage(dataSet[0].profile_picture);
   }, []);
 
   const mapStats = !dataSet
@@ -51,18 +60,23 @@ const Dashboard = (props) => {
       });
 
   return (
-    <div className="flex-display">
-      <div className="profile-container">
-        <Profile name={name} />
-        <Period
-          timeframes={timeframesData}
-          selectTime={setSelected}
-          selected={selected}
-        />
+    <div className="dashboard-container">
+      <div className="back-button" onClick={backHandler}>
+        <p>Back to Profiles</p>
       </div>
-      <div className="stats-container grid">
-        {props.status && <Loading />}
-        {!props.status && mapStats}
+      <div className="flex-display">
+        <div className="profile-container">
+          <Profile name={name} image={image} />
+          <Period
+            timeframes={timeframesData}
+            selectTime={setSelected}
+            selected={selected}
+          />
+        </div>
+        <div className="stats-container grid">
+          {props.status && <Loading />}
+          {!props.status && mapStats}
+        </div>
       </div>
     </div>
   );
