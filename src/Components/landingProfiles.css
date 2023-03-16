@@ -14,10 +14,6 @@
     justify-content: center;
   }
 
-  .profile-image img {
-    min-height: 0;
-  }
-
   .landing-profile-container {
     cursor: pointer;
     align-self: center;
@@ -121,11 +117,14 @@
   .profile-image img {
     height: auto;
     width: 100%;
-    min-height: 317px;
+    min-height: 0px;
   }
 }
 
 @media (min-width: 640px) {
+  .profile-image img {
+    min-height: 317px;
+  }
 }
 
 @media (min-width: 768px) {
