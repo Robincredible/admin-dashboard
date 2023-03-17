@@ -10,6 +10,8 @@ import Period from "./period";
 import Loading from "./loading";
 
 const Dashboard = (props) => {
+  console.log(props.data);
+
   const filteredData = props.dataset.filter((e) => e._id === props.selectedID);
   const [loading, setLoading] = useState(props.status);
   const [active, setActive] = useState("");

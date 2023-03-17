@@ -6,26 +6,33 @@ import useLongPress from "../useLongPress";
 const LandingProfiles = (props) => {
   const navigate = useNavigate();
   const [selected, setSelected] = useState("");
-  const [longPressCount, setlongPressCount] = useState(0);
+  // const [longPressCount, setlongPressCount] = useState(0);
   const [willDelete, setWillDelete] = useState(false);
 
-  /* Long Press Hook from https://stackoverflow.com/questions/48048957/react-long-press-event */
-  const onLongPress = () => {
-    console.log("longpress is triggered");
-    setlongPressCount(longPressCount + 1);
-  };
+  // /* Long Press Hook from https://stackoverflow.com/questions/48048957/react-long-press-event */
+  // const onLongPress = () => {
+  //   console.log("longpress is triggered");
+  //   setlongPressCount(longPressCount + 1);
+  // };
 
-  const onClick = (event) => {
-    // console.log("click is triggered");
-    // setClickCount(clickCount + 1);
-  };
+  // const onClick = (event) => {
+  //   console.log("click is triggered " + event.target.id);
+  //   let id = event.target.id;
 
-  const defaultOptions = {
-    shouldPreventDefault: true,
-    delay: 1000,
-  };
-  const longPressEvent = useLongPress(onLongPress, onClick, defaultOptions);
-  /* End of long press hook */
+  //   setSelected(id);
+  //   props.selected(id);
+  //   props.profiles(false);
+
+  //   navigate("/" + id);
+  //   // setClickCount(clickCount + 1);
+  // };
+
+  // const defaultOptions = {
+  //   shouldPreventDefault: true,
+  //   delay: 1000,
+  // };
+  // const longPressEvent = useLongPress(onLongPress, onClick, defaultOptions);
+  // /* End of long press hook */
 
   const clickDelete = (id) => {
     try {
@@ -48,11 +55,11 @@ const LandingProfiles = (props) => {
     }
   };
 
-  useEffect(() => {
-    if (longPressCount > 0) {
-      setWillDelete(!willDelete);
-    }
-  }, [longPressCount]);
+  // useEffect(() => {
+  //   if (longPressCount > 0) {
+  //     setWillDelete(!willDelete);
+  //   }
+  // }, [longPressCount]);
 
   const clickHandler = (id) => {
     setSelected(id);
@@ -67,7 +74,7 @@ const LandingProfiles = (props) => {
 
   return (
     <div>
-      <div className={profilesClassNames} {...longPressEvent}>
+      <div className={profilesClassNames}>
         {props.data.map((item) => {
           return (
             <div>
