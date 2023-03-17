@@ -1,38 +1,13 @@
 import "./landingProfiles.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useLongPress from "../useLongPress";
 
 const LandingProfiles = (props) => {
   const navigate = useNavigate();
   const [selected, setSelected] = useState("");
-  // const [longPressCount, setlongPressCount] = useState(0);
   const [willDelete, setWillDelete] = useState(false);
-
-  // /* Long Press Hook from https://stackoverflow.com/questions/48048957/react-long-press-event */
-  // const onLongPress = () => {
-  //   console.log("longpress is triggered");
-  //   setlongPressCount(longPressCount + 1);
-  // };
-
-  // const onClick = (event) => {
-  //   console.log("click is triggered " + event.target.id);
-  //   let id = event.target.id;
-
-  //   setSelected(id);
-  //   props.selected(id);
-  //   props.profiles(false);
-
-  //   navigate("/" + id);
-  //   // setClickCount(clickCount + 1);
-  // };
-
-  // const defaultOptions = {
-  //   shouldPreventDefault: true,
-  //   delay: 1000,
-  // };
-  // const longPressEvent = useLongPress(onLongPress, onClick, defaultOptions);
-  // /* End of long press hook */
+  const [counter, setCounter] = useState(0);
+  const [mouse, setMouse] = useState("");
 
   const clickDelete = (id) => {
     try {
@@ -55,12 +30,6 @@ const LandingProfiles = (props) => {
     }
   };
 
-  // useEffect(() => {
-  //   if (longPressCount > 0) {
-  //     setWillDelete(!willDelete);
-  //   }
-  // }, [longPressCount]);
-
   const clickHandler = (id) => {
     setSelected(id);
     props.selected(id);
@@ -72,8 +41,21 @@ const LandingProfiles = (props) => {
   const profilesClassNames =
     "profiles " + (willDelete ? "delete-activated " : "");
 
+  const holdCounter = () => {
+    while (mouse === "mouseDown") {
+      setInterval(() => setCounter((prev) => prev + 1), 1000);
+    }
+    clearInterval();
+  };
+
   return (
-    <div>
+    <div
+      onClick={holdCounter}
+      onMouseDown={() => setMouse("mouseDown")}
+      onMouseUp={() => {
+        setMouse("mouseUp");
+      }}
+    >
       <div className={profilesClassNames}>
         {props.data.map((item) => {
           return (
