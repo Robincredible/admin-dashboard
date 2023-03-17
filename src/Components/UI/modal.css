@@ -1,0 +1,12 @@
+.modal {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  left: 0;
+  top: 0;
+}
+
+.add-button-container + .card.modal {
+  border-radius: 0px;
+}

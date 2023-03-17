@@ -1,4 +1,4 @@
-import Card from "../Components/UI/card";
+import Card from "../UI/card";
 import "./context-menu.css";
 
 const ContextMenu = (props) => {

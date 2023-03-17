@@ -37,7 +37,7 @@
     transition: 1s;
     font-weight: 500;
     color: #f1c75b;
-    font-size: 48px;
+    font-size: 36px;
     letter-spacing: 9px;
     text-shadow: -2px -2px #1b284a, -3px -3px #1b284a, -4px -4px #1b284a,
       -3px -3px #1b284a, -2px -2px #1b284a, -1px -1px #1b284a, 1px 1px #1b284a,
@@ -84,7 +84,7 @@
     align-self: center;
     animation: rotate;
     animation-fill-mode: forwards;
-    animation-duration: 140s;
+    animation-duration: 60s;
     animation-direction: normal;
     animation-iteration-count: infinite;
   }
@@ -118,12 +118,14 @@
     height: auto;
     width: 100%;
     min-height: 0px;
+    object-fit: cover;
   }
 }
 
 @media (min-width: 640px) {
   .profile-image img {
     min-height: 317px;
+    min-width: 317px;
   }
 }
 
@@ -146,8 +148,9 @@
 }
 
 @media (min-width: 1200px) {
-  .profiles {
-    flex-wrap: nowrap;
+  .profiles > div {
+    flex-grow: 1;
+    width: 20%;
   }
 }
 
