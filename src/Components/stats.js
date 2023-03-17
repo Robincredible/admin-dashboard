@@ -13,7 +13,7 @@ const Stats = (props) => {
     return string.replace(/\W+/g, "-").toLowerCase();
   };
 
-  console.log(props.timeframes[timeframeSelected].current);
+  //console.log(props.timeframes[timeframeSelected].current);
 
   const clickHandler = (title) => {
     if (props.active === title) {
