@@ -1,6 +1,6 @@
 import Card from "./UI/card";
 import ellipsis from "../Images/icon-ellipsis.svg";
-import ContextMenu from "../Admin Components/context-menu";
+import ContextMenu from "./Admin Components/context-menu";
 
 import "./stats.css";
 import { useState } from "react";

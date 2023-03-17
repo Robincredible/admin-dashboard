@@ -3,6 +3,7 @@ import Dashboard from "./Components/dashboard";
 import Loading from "./Components/loading";
 import { useState, useEffect } from "react";
 import LandingProfiles from "./Components/landingProfiles";
+import AddNewUser from "./Components/Admin Components/add-new-user";
 
 export default function App() {
   const [dataset, setDataset] = useState("");
@@ -43,6 +44,7 @@ export default function App() {
           profiles={setProfilesLanding}
         />
       )}
+      {!loading && profilesLanding && <AddNewUser />}
       {!loading && !profilesLanding && (
         <Dashboard
           dataset={dataset}
