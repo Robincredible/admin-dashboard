@@ -7,6 +7,50 @@
   }
 }
 
+@keyframes shiver {
+  0% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+
+  25% {
+    transform: translate(-1px, 1px) rotate(-1deg);
+  }
+
+  50% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+
+  75% {
+    transform: translate(-1px, 1px) rotate(-1deg);
+  }
+
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+}
+
+@keyframes shiver2 {
+  0% {
+    transform: translate(-1px, 1px) rotate(-1deg);
+  }
+
+  25% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+
+  50% {
+    transform: translate(-1px, 1px) rotate(-1deg);
+  }
+
+  75% {
+    transform: translate(-1px, 1px) rotate(1deg);
+  }
+
+  100% {
+    transform: translate(0px, 0px) rotate(-1deg);
+  }
+}
+
 @media (min-width: 320px) {
   .delete-button {
     position: absolute;
@@ -24,6 +68,14 @@
     font-weight: 900;
     cursor: pointer;
     transition: 0.6s;
+  }
+
+  .profiles.delete-activated > div:nth-child(even) {
+    animation: shiver 0.5s infinite forwards;
+  }
+
+  .profiles.delete-activated > div:nth-child(odd) {
+    animation: shiver2 0.5s infinite reverse;
   }
 
   .profiles.delete-activated .delete-button {
