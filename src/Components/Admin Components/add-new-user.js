@@ -2,7 +2,7 @@ import "./add-new-user.css";
 import { useState } from "react";
 import AddUserModal from "./add-user-modal";
 
-const AddNewUser = () => {
+const AddNewUser = (props) => {
     const [modalView, setModalView] = useState(false);
     
     const buttonClasses = "add-button " + (modalView ? "close-button " : "");
@@ -19,7 +19,7 @@ const AddNewUser = () => {
                     <p>+</p>
                 </div>
             </div>
-            {modalView == true && <AddUserModal modalView={setModalView} />}
+            {modalView == true && <AddUserModal modalView={setModalView} dataTrigger={props.dataTrigger} />}
         </div>
     )
 }

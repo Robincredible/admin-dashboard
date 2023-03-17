@@ -31,8 +31,10 @@ export default function App() {
       }
     };
 
-    fetchData();
-  }, []);
+    if (loading === true) {
+      fetchData();
+    }
+  }, [loading]);
 
   return (
     <div className="App">
@@ -44,7 +46,7 @@ export default function App() {
           profiles={setProfilesLanding}
         />
       )}
-      {!loading && profilesLanding && <AddNewUser />}
+      {!loading && profilesLanding && <AddNewUser dataTrigger={setLoading} />}
       {!loading && !profilesLanding && (
         <Dashboard
           dataset={dataset}

@@ -1,5 +1,5 @@
 import Modal from "../UI/modal";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import "./add-user-modal.css";
 
 const AddUserModal = (props) => {
@@ -9,10 +9,6 @@ const AddUserModal = (props) => {
     const [data, setData] = useState("");
     
     let contentLength = (name + profilePic).length;
-    
-    useEffect(() => {
-        //
-    }, [])
     
     const submitHandler = async(e) => {
         e.preventDefault();
@@ -36,6 +32,7 @@ const AddUserModal = (props) => {
                 setName("");
                 setProfilePic("");
                 setData("");
+                props.dataTrigger(true);
                 props.modalView(false);
                 console.log('Success!');
             } else {
