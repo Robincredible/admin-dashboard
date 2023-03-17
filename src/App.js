@@ -34,7 +34,7 @@ export default function App() {
     if (loading === true) {
       fetchData();
     }
-  }, [loading]);
+  }, [dataset, loading]);
 
   return (
     <div className="App">
