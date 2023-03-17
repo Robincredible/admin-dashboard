@@ -8,13 +8,47 @@
 }
 
 @media (min-width: 320px) {
+  .delete-button {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    right: 85px;
+    top: 50px;
+    height: 20px;
+    width: 20px;
+    background: #cf4862;
+    border-radius: 100%;
+    color: #0d1323;
+    padding: 3px 10px 14px;
+    font-size: 24px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: 0.6s;
+  }
+
+  .profiles.delete-activated .delete-button {
+    opacity: 1;
+    pointer-events: all;
+    transition: 0.6s;
+    z-index: 77;
+  }
+
   .profiles {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
 
+  .profiles > div {
+    position: relative;
+  }
+
+  .profiles.delete-activated .landing-profile-container {
+    pointer-events: none;
+  }
+
   .landing-profile-container {
+    position: relative;
     cursor: pointer;
     align-self: center;
     margin: 20px;
@@ -105,8 +139,8 @@
     display: flex;
     transition: 0.6s;
     align-self: center;
-    min-width: 250px;
-    min-height: 250px;
+    min-width: 320px;
+    min-height: 320px;
   }
 
   .profile-image:hover {
@@ -126,6 +160,10 @@
   .profile-image img {
     min-height: 317px;
     min-width: 317px;
+  }
+
+  .delete-button {
+    top: 40px;
   }
 }
 
@@ -149,8 +187,7 @@
 
 @media (min-width: 1200px) {
   .profiles > div {
-    flex-grow: 1;
-    width: 20%;
+    width: 33%;
   }
 }
 

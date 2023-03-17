@@ -44,6 +44,7 @@ export default function App() {
           data={dataset}
           selected={setId}
           profiles={setProfilesLanding}
+          dataTrigger={setLoading}
         />
       )}
       {!loading && profilesLanding && <AddNewUser dataTrigger={setLoading} />}

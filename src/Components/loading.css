@@ -1,0 +1,28 @@
+@keyframes hover {
+  0% {
+    transform: translateY(0px);
+  }
+  25% {
+    transform: translateY(8px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  75% {
+    transform: translateY(8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.loading h1 {
+  font-family: Luckiest Guy, sans-serif;
+  font-size: 72px;
+  letter-spacing: 6px;
+  text-shadow: -2px -2px #cf4862, -3px -3px #cf4862, -4px -4px #cf4862,
+    -3px -3px #cf4862, -2px -2px #cf4862, -1px -1px #cf4862, 1px 1px #cf4862,
+    2px 2px #cf4862, 3px 3px #cf4862, 4px 4px #cf4862, 5px 5px #cf4862;
+  width: 100%;
+  animation: hover 6s forwards infinite;
+}
