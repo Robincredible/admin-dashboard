@@ -28,12 +28,13 @@
     background: transparent;
     border: none;
     border-bottom: solid 1px rgba(255,255,255,0.3);
-    width: 40%;
+    width: 50%;
     transition: 0.3s;
     font-size: 64px;
     font-family: Luckiest Guy;
     color: #ffffff;
-    padding-bottom: 10px;
+    padding: 10px 20px 10px;
+    letter-spacing: 1px;
 }
 
 .add-user-form input[type="text"]:hover,
