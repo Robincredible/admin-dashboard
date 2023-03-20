@@ -10,32 +10,34 @@ import Period from "./period";
 import Loading from "./loading";
 
 const Dashboard = (props) => {
-  console.log(props.data);
-
-  const filteredData = props.dataset.filter((e) => e._id === props.selectedID);
+  const filteredData = props.dataset
+    ? props.dataset.filter((e) => e._id === props.selectedID)
+    : null;
   const [loading, setLoading] = useState(props.status);
+  const [dataSet, setDataSet] = useState(filteredData);
   const [active, setActive] = useState("");
   const [selected, setSelected] = useState("Weekly");
-  const [name, setName] = useState(filteredData.name);
-  const [image, setImage] = useState(filteredData.profile_picture);
+  const [name, setName] = useState(filteredData[0].name || dataSet[0].name);
+  const [image, setImage] = useState(filteredData[0].profile_picture);
+  const [id, setId] = useState(props.selectedID);
 
   const timeframes = ["Daily", "Weekly", "Monthly"]; //test data
-  const [dataSet, setDataSet] = useState(filteredData);
   //const dataSet = props.dataset ? props.dataset : "";
 
   const navigate = useNavigate();
 
   const backHandler = () => {
-    //props.setStatus(true);
+    props.setStatus(true);
     props.setProfiles(true);
+    props.setID("");
     navigate("/");
   };
 
   useEffect(() => {
     setDataSet(filteredData);
-    setName(dataSet[0].name);
+    setName(filteredData[0].name || dataSet[0].name);
     setImage(dataSet[0].profile_picture);
-  }, []);
+  }, [dataSet]);
 
   const mapStats = !dataSet
     ? "Loading"
@@ -68,7 +70,7 @@ const Dashboard = (props) => {
       </div>
       <div className="flex-display">
         <div className="profile-container">
-          <Profile name={name} image={image} />
+          <Profile id={id} name={name} image={image} />
           <Period
             timeframes={timeframesData}
             selectTime={setSelected}
