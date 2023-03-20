@@ -1,13 +1,24 @@
 import "./landingProfiles.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useLongPress from "./newLongPress";
 
 const LandingProfiles = (props) => {
   const navigate = useNavigate();
   const [selected, setSelected] = useState("");
   const [willDelete, setWillDelete] = useState(false);
-  const [counter, setCounter] = useState(0);
   const [mouse, setMouse] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState(props.data);
+
+  useEffect(() => {
+    setData(data);
+  }, [data]);
+
+  const backspaceLongPress = useLongPress(
+    () => setWillDelete(!willDelete),
+    1000
+  );
 
   const clickDelete = (id) => {
     try {
@@ -41,23 +52,25 @@ const LandingProfiles = (props) => {
   const profilesClassNames =
     "profiles " + (willDelete ? "delete-activated " : "");
 
-  const holdCounter = () => {
-    while (mouse === "mouseDown") {
-      setInterval(() => setCounter((prev) => prev + 1), 1000);
-    }
-    clearInterval();
-  };
+  console.log(data);
 
   return (
     <div
-      onClick={holdCounter}
       onMouseDown={() => setMouse("mouseDown")}
       onMouseUp={() => {
         setMouse("mouseUp");
       }}
+      onMouseMove={() => setMouse("mouseUp")}
+      onTouchCancel={() => setMouse("mouseUp")}
+      onTouchMove={() => setMouse("mouseUp")}
+      onTouchStart={() => setMouse("mouseDown")}
+      onTouchEnd={() => {
+        setMouse("mouseUp");
+      }}
+      {...backspaceLongPress}
     >
       <div className={profilesClassNames}>
-        {props.data.map((item) => {
+        {data.map((item) => {
           return (
             <div>
               <div

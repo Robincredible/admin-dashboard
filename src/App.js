@@ -34,7 +34,7 @@ export default function App() {
     if (loading === true) {
       fetchData();
     }
-  }, [dataset, loading]);
+  }, [dataset, loading, profilesLanding]);
 
   return (
     <div className="App">
@@ -48,10 +48,11 @@ export default function App() {
         />
       )}
       {!loading && profilesLanding && <AddNewUser dataTrigger={setLoading} />}
-      {!loading && !profilesLanding && (
+      {!loading && !profilesLanding && dataset && id && (
         <Dashboard
           dataset={dataset}
           selectedID={id}
+          setID={setId}
           status={loading}
           setStatus={setLoading}
           setProfiles={setProfilesLanding}
