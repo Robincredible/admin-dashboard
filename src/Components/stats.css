@@ -1,4 +1,55 @@
 @media (min-width: 320px) {
+  /* edit */
+  #stats-form {
+    display: flex;
+    padding: 0;
+  }
+
+  .stats-form .stat-hours,
+  .stats-form .stat-hours-prev {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  .stats-form .stat-hours *,
+  .stats-form .stat-hours-prev * {
+    align-self: center;
+  }
+
+  .stats-form .stat-hours input {
+    width: 120px;
+  }
+
+  .stats-form .stat-hours-prev input {
+    width: 40px;
+    margin-left: 8px;
+  }
+
+  .stats-form input,
+  .stats-form input:hover,
+  .stats-form input:focus {
+    padding: 10px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+    outline: none;
+    font-weight: inherit;
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    height: auto;
+  }
+
+  .stats-form .stat-hours input,
+  .stats-form .stat-hours-prev input {
+    padding: 5px 0;
+  }
+
+  /* display */
+
   .flex-title {
     display: flex;
     flex-basis: 100%;
@@ -27,8 +78,8 @@
     top: 0px;
     -webkit-transition: 0.3s, 0.3s;
     transition: 0.3s, 0.3s;
-    transform: scale(0.90) skew(18deg) rotate(9deg);
-    -webkit-transform: scale(0.90) skew(18deg) rotate(9deg);
+    transform: scale(0.9) skew(18deg) rotate(9deg);
+    -webkit-transform: scale(0.9) skew(18deg) rotate(9deg);
   }
 
   .stats:before {

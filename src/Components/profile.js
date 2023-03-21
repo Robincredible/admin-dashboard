@@ -85,7 +85,7 @@ const Profile = (props) => {
           />
         )}
         {willEdit && (
-          <input class="edit-submit-button" value="Done" type="submit" />
+          <input className="edit-submit-button" value="Done" type="submit" />
         )}
       </form>
     </Card>
