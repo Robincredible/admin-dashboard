@@ -34,7 +34,7 @@ const LandingProfiles = (props) => {
         }
       ).then((res) => {
         props.dataTrigger(true);
-        console.log("Successfully deleted profile!" + res.status);
+        console.log("Successfully deleted profile! Status:" + res.status);
       });
     } catch (err) {
       console.log(err);
@@ -52,7 +52,7 @@ const LandingProfiles = (props) => {
   const profilesClassNames =
     "profiles " + (willDelete ? "delete-activated " : "");
 
-  console.log(data);
+  //console.log(data);
 
   return (
     <div
@@ -72,9 +72,9 @@ const LandingProfiles = (props) => {
       <div className={profilesClassNames}>
         {data.map((item) => {
           return (
-            <div>
+            <div key={item._id + "-container"}>
               <div
-                key={item.id}
+                key={item._id + "-delete"}
                 className="delete-button"
                 onClick={() => clickDelete(item._id)}
               >
@@ -85,18 +85,31 @@ const LandingProfiles = (props) => {
                 className="landing-profile-container"
                 onClick={() => clickHandler(item._id)}
               >
-                <div className="profile-border">
-                  <div className="rotating-border">
-                    <div className="rotation"></div>
+                <div
+                  className="profile-border"
+                  key={item._id + "-profile-border"}
+                >
+                  <div
+                    className="rotating-border"
+                    key={item._id + "-rotating-border"}
+                  >
+                    <div
+                      className="rotation"
+                      key={item._id + "-rotation"}
+                    ></div>
                   </div>
-                  <div className="profile-image">
+                  <div
+                    className="profile-image"
+                    key={item._id + "-profile-image"}
+                  >
                     <img
+                      key={item._id + "-image"}
                       src={item.profile_picture}
                       alt="Artworks by Chris Thomas on Behance - https://www.behance.net/MisterMass"
                     />
                   </div>
                 </div>
-                <p>{item.name}</p>
+                <p key={item._id + "-name"}>{item.name}</p>
               </div>
             </div>
           );

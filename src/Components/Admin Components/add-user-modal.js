@@ -113,15 +113,15 @@ const AddUserModal = (props) => {
             <div className="add-user-container">
                 <form onSubmit={submitHandler} className="add-user-form">
                     <div>
-                        <label for="username">Username</label>
-                        <input autoFocus autoComplete="off" maxlength="30" placeholder="Username" name="username" id="username" type="text" onChange={(e) => setName(e.target.value) } />
+                        <label htmlFor="username">Username</label>
+                        <input autoFocus autoComplete="off" maxLength="30" placeholder="Username" name="username" id="username" type="text" onChange={(e) => setName(e.target.value) } />
                     </div>
                     <div>
-                        <label for="profile_pic">Profile_Pic</label>
+                        <label htmlFor="profile_pic">Profile_Pic</label>
                         <input autoComplete="off" placeholder="Link to Profile Picture" name="profile_picture" id="profile_picture" type="text" onChange={(e) => setProfilePic(e.target.value)} />
                     </div>
                     <div>
-                        <input type="Submit" value="SUBMIT" />
+                        <input type="Submit" value="SUBMIT" readOnly />
                     </div>
                 </form>
             </div>

@@ -34,6 +34,7 @@ const Dashboard = (props) => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     setDataSet(filteredData);
     setName(filteredData[0].name || dataSet[0].name);
     setImage(dataSet[0].profile_picture);
@@ -66,7 +67,7 @@ const Dashboard = (props) => {
   return (
     <div className="dashboard-container">
       <div className="back-button" onClick={backHandler}>
-        <p>Back to Profiles</p>
+        <p>Back</p>
       </div>
       <div className="flex-display">
         <div className="profile-container">

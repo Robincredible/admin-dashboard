@@ -14,7 +14,7 @@ html {
   }
 
   body {
-    padding: 20px;
+    padding: 20px 0;
     max-width: 1400px;
     margin: 0 auto;
     font-family: "Rubik", sans-serif;
@@ -26,9 +26,10 @@ html {
     justify-content: center;
     align-items: center;
     text-align: center;
-    min-height: 100vh;
+    min-height: 90vh;
     margin: 0 auto;
     font-family: "Rubik", sans-serif;
+    overflow-x: hidden;
   }
 }
 
@@ -39,6 +40,9 @@ html {
 }
 
 @media (min-width: 1024px) {
+  .App {
+    padding: 20px;
+  }
 }
 
 @media (min-width: 1200px) {

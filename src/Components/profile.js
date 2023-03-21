@@ -69,7 +69,7 @@ const Profile = (props) => {
         src={props.image || defaultImage}
         alt="Artworks by Chris Thomas on Behance - https://www.behance.net/MisterMass"
       />
-      <p>Report for</p>
+      <p>Profile</p>
       {!willEdit && <h1 className="name">{name}</h1>}
       {!willEdit && (
         <p className="edit-button" onClick={() => setWillEdit(!willEdit)}>
@@ -78,14 +78,15 @@ const Profile = (props) => {
       )}
       <form className={willEdit ? "edit-form " : ""} onSubmit={submitHandler}>
         {willEdit && (
-          <h1 className="name">
-            <input
-              placeholder={props.name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </h1>
+          <textarea
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            autoFocus
+          />
         )}
-        {willEdit && <input value="Done" type="submit" />}
+        {willEdit && (
+          <input class="edit-submit-button" value="Done" type="submit" />
+        )}
       </form>
     </Card>
   );
