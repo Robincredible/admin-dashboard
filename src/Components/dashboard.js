@@ -54,6 +54,7 @@ const Dashboard = (props) => {
             }}
           >
             <Stats
+              id={props.selectedID}
               title={item.title}
               timeframes={item.timeframes}
               selected={selected}
