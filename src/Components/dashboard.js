@@ -13,6 +13,7 @@ const Dashboard = (props) => {
   const filteredData = props.dataset
     ? props.dataset.filter((e) => e._id === props.selectedID)
     : null;
+  const [onSelect, setOnSelect] = useState(false);
   const [loading, setLoading] = useState(props.status);
   const [dataSet, setDataSet] = useState(filteredData);
   const [active, setActive] = useState("");
@@ -61,6 +62,7 @@ const Dashboard = (props) => {
               selected={selected}
               key={item.title}
               active={active}
+              onSelect={onSelect}
             />
           </div>
         );
@@ -78,11 +80,12 @@ const Dashboard = (props) => {
             timeframes={timeframesData}
             selectTime={setSelected}
             selected={selected}
+            onSelect={setOnSelect}
           />
         </div>
         <div className="stats-container grid">
-          {props.status && <Loading />}
-          {!props.status && mapStats}
+          {/* {props.status && <Loading />} */}
+          {mapStats}
         </div>
       </div>
     </div>
