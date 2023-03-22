@@ -7,7 +7,7 @@ import StatsEdit from "./Admin Components/stats-edit";
 const Stats = (props) => {
   const timeframeSelected = props.selected.toLowerCase();
   const [activeMenu, setActiveMenu] = useState(false);
-  const [currentTime, setCurrentTime] = useState(timeframeSelected);
+  const [currentTime, setCurrentTime] = useState("");
   const [title, setTitle] = useState(props.title);
   const [loading, setLoading] = useState(true);
   const [current, setCurrent] = useState(
@@ -33,6 +33,13 @@ const Stats = (props) => {
 
   useEffect(() => {
     setCurrentTime(props.selected.toLowerCase());
+    setCurrent(current);
+    setPrevious(previous);
+
+    if (props.onSelect === true) {
+      setActiveMenu(false);
+      setWillEdit(false);
+    }
 
     const fetchData = async () => {
       try {
@@ -41,6 +48,7 @@ const Stats = (props) => {
             return res.json();
           })
           .then((data) => {
+            console.log(data);
             setLoading(false);
             setCurrent(data.current);
             setPrevious(data.previous);
@@ -53,7 +61,7 @@ const Stats = (props) => {
         fetchData();
       }
     };
-  }, [current, previous, currentTime]);
+  }, [props.selected, current, previous]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -113,12 +121,12 @@ const Stats = (props) => {
       </div>
       {!willEdit && (
         <h2 key={props.title + "-h2"} className="stat-hours">
-          {current}hrs
+          {props.timeframes[timeframeSelected].current}hrs
         </h2>
       )}
       {!willEdit && (
         <h3 key={props.title + "-h3"} className="stat-hours-prev">
-          Last Week - {previous} Hours
+          Last Week - {props.timeframes[timeframeSelected].previous} Hours
         </h3>
       )}
       {willEdit && (

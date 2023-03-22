@@ -23,6 +23,7 @@ const Period = (props) => {
     const selectedValue = e.currentTarget.getAttribute("data-text");
     setSelected(selectedValue); // choosing an item updates the state
     updateActiveElement(value); // update the state with the id of the active element
+    props.onSelect(true);
   };
 
   return (
