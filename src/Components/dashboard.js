@@ -41,8 +41,8 @@ const Dashboard = (props) => {
   }, [dataSet]);
 
   const mapStats = !dataSet
-    ? "Loading"
-    : dataSet[0].data.map((item) => {
+    ? "Loading "
+    : dataSet[0].data.map((item, i) => {
         return (
           <div
             key={item.title}
@@ -54,6 +54,7 @@ const Dashboard = (props) => {
             }}
           >
             <Stats
+              i={i}
               id={props.selectedID}
               title={item.title}
               timeframes={item.timeframes}
