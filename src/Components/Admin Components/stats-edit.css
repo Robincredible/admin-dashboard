@@ -1,8 +1,36 @@
-.button,
-.button:hover,
-.button:focus{
+.stats-edit-button .button,
+.stats-edit-button .button:hover,
+.stats-edit-button .button:focus{
     background: transparent;
     border: none;
     outline: none;
     cursor: pointer;
+}
+
+.stats-edit-button{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.stats-edit-button .edit-button,
+.stats-edit-button .submit-button{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    pointer-events: none;
+    padding: 8px 24px;
+    border-radius: inherit;
+    background: #e1e1e1;
+    border: inherit;
+    cursor: inherit;
+}
+
+.stats-edit-button .active{
+    opacity: 1;
+    pointer-events: auto;
 }
