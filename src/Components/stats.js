@@ -8,15 +8,13 @@ const Stats = (props) => {
   const timeframeSelected = props.selected.toLowerCase();
   const [activeMenu, setActiveMenu] = useState(false);
   const [currentTime, setCurrentTime] = useState("");
-  const [title, setTitle] = useState(props.title);
   const [loading, setLoading] = useState(true);
-  const [current, setCurrent] = useState(
-    props.timeframes[timeframeSelected].current
-  );
-  const [previous, setPrevious] = useState(
-    props.timeframes[timeframeSelected].previous
-  );
+  const [current, setCurrent] = useState("");
+  const [previous, setPrevious] = useState("");
+  const [currentEdit, setCurrentEdit] = useState("");
+  const [previousEdit, setPreviousEdit] = useState("");
   const [willEdit, setWillEdit] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const sanitizedTitle = (string) => {
     return string.replace(/\W+/g, "-").toLowerCase();
@@ -33,8 +31,10 @@ const Stats = (props) => {
 
   useEffect(() => {
     setCurrentTime(props.selected.toLowerCase());
-    setCurrent(current);
-    setPrevious(previous);
+    setCurrent(props.timeframes[timeframeSelected].current);
+    setPrevious(props.timeframes[timeframeSelected].previous);
+    // setCurrentEdit(current);
+    // setPreviousEdit(previous);
 
     if (props.onSelect === true) {
       setActiveMenu(false);
@@ -61,10 +61,12 @@ const Stats = (props) => {
         fetchData();
       }
     };
-  }, [props.selected, current, previous]);
+  }, [props.selected, willEdit, submitted]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
+
+    console.log("submarine");
 
     const contentLength = 600;
 
@@ -116,6 +118,10 @@ const Stats = (props) => {
             className={activeMenu === true ? "active " : ""}
             edit={setWillEdit}
             active={activeMenu}
+            editing={willEdit}
+            onSelect={props.onSelect}
+            id={props.id}
+            submitOutside={setSubmitted}
           />
         </div>
       </div>
@@ -131,8 +137,11 @@ const Stats = (props) => {
       )}
       {willEdit && (
         <form
-          key={props.title + "-form"}
-          onSubmit={submitHandler}
+          key={props.id + "-" + props.title + "-form"}
+          onSubmit={(e) => {
+            submitted ? submitHandler(e) : "";
+          }}
+          // onSubmit={alert("alert")}
           id="stats-form"
           className="stats-form"
         >
@@ -152,7 +161,7 @@ const Stats = (props) => {
               key={props.title + "-form-input-2"}
               maxLength="3"
               className="previous"
-              value={previous}
+              value={previousEdit}
               onChange={(e) => setPrevious(e.target.value)}
             />{" "}
             Hours
