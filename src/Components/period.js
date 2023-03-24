@@ -34,7 +34,9 @@ const Period = (props) => {
             key={timeframe.text}
             id={timeframe.id}
             data-text={timeframe.text}
-            className={active == timeframe.text ? "active" : ""}
+            className={
+              timeframe.text + " " + (active == timeframe.text ? "active" : "")
+            }
             onClick={clickHandler}
           >
             {timeframe.text}

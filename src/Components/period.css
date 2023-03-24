@@ -5,6 +5,12 @@
     justify-content: space-between;
   }
 
+  .Daily,
+  .Weekly,
+  .Monthly {
+    pointer-events: none;
+  }
+
   .period * {
     transition: 0.3s;
   }
