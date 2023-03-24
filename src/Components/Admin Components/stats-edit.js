@@ -16,13 +16,15 @@ const StatsEdit = (props) => {
         e.preventDefault();
         
         if (edit === false){
+            console.log("editing...");
             setEdit(!edit);
             props.edit(!edit);
-            props.submitOutside(true);   
+            props.submitOutside(false);   
         } else {
+            console.log("done editing.");
             setEdit(!edit);
             props.edit(!edit);
-            props.submitOutside(false);
+            props.submitOutside(true);
         }
     }
     
